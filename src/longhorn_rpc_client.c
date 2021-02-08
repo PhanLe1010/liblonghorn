@@ -21,7 +21,7 @@
 
 int retry_interval = 5;
 int retry_counts = 5;
-int request_timeout_period = 15; //seconds
+int request_timeout_period = 1500; //seconds
 
 int send_request(struct lh_client_conn *conn, struct Message *req) {
         int rc = 0;
@@ -124,7 +124,7 @@ int lh_client_close_conn(struct lh_client_conn *conn) {
 
                 pthread_mutex_lock(&req->mutex);
                 req->Type = TypeError;
-                errorf("Cancel request %d due to disconnection\n", req->Seq);
+                errorf("Cancel request %d due to disconnection ==== bullshit\n", req->Seq);
                 pthread_mutex_unlock(&req->mutex);
                 pthread_cond_signal(&req->cond);
         }
@@ -261,7 +261,7 @@ void *timeout_handler(void *arg) {
 
                         pthread_mutex_lock(&req->mutex);
                         req->Type = TypeError;
-                        errorf("Timeout request %d due to disconnection\n",
+                        errorf("Timeout request %d due to disconnection ==== bullshit\n",
                                         req->Seq);
                         pthread_mutex_unlock(&req->mutex);
                         pthread_cond_signal(&req->cond);
