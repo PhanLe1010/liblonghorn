@@ -21,7 +21,7 @@
 
 int retry_interval = 5;
 int retry_counts = 5;
-int request_timeout_period = 15000; //seconds
+int request_timeout_period = 1500; //seconds
 
 int send_request(struct lh_client_conn *conn, struct Message *req) {
         int rc = 0;
